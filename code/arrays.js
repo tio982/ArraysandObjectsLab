@@ -42,41 +42,49 @@ console.log("The third station is " + thirdStation);
  * Q5.
  * Someone put the wrong Berwick on the timetable! Update "North Berwick" to "Berwick-upon-Tweed".
  */
-let firstname = "North Berwick";
-let newName = "Berwick-upon-Tweed";
-const changeName = function(newName){
-stations.firstname = newName;
-}
+// First find the index of "North Berwick"
+const indexOfNorthBerwick=stations.indexOf("North Berwick");
+// Check the index
+console.log(indexOfNorthBerwick);
+stations[indexOfNorthBerwick]="Berwick-upon-Tweed";
+
 
 /**
  * Q6.
  * How did Leeds get on there? Better remove it.
  */
 
-// console.log(stations);
+// First find the index of Leeds in the stations array using indexOf
+const indexOfLeeds=stations.indexOf("Leeds");
+// Use splice to remove existing "Leeds" element from the array
+// The first argument in splice is the index and second argument is the number of elements
+stations.splice(indexOfLeeds,1);
 
+console.log(stations);
 
 
 /**
  * Q7.
  * We forgot about Darlington! Add it to the route between Newcastle and York.
  */
+// Using the form given as:
+    // array.splice(index, number of elements, element, element);
+    //where index is the index of element "York" and number of elements is zero in order to not remove anything
+    const indexOfYork=stations.indexOf("York");
+    stations.splice(indexOfYork,0,'Darlington');
+    console.log(stations);
 
-// console.log(stations);
-
-
-
-/**
- * Q8.
- * Is Durham one of the stops?
- */
-
-// stoppingAtDurham = null;
-
-// console.log(stoppingAtDurham);
-
+//  * Q8.
+//  * Is Durham one of the stops?
+  stoppingAtDurham = stations.includes("Durham");
+    console.log(stoppingAtDurham);
+    
 
 /**
  * Q9.
  * If we are stopping at Durham, print "Yay Durham!" to the terminal. If not print "Aww...".
  */
+ if (stoppingAtDurham==true){
+    console.log("Yay Durham")
+}else{
+    console.log("Aww...")}
